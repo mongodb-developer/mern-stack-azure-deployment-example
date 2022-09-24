@@ -15,27 +15,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'      
 
-      - name: Install npm packages - server
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+
+      - name: npm install, build, and test
         run: |
-          cd mern/server
-          npm install       
-      
-      - name: Install npm packages, build then copy files - client
-        run: |
-          cd mern/client
           npm install
-          npm run build
-          cp -r ./build ../server/public
-            
+          npm run build --if-present
+          npm run test --if-present
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: mern-app
-          path: mern/server
+          name: node-app
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,7 +44,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: mern-app
+          name: node-app
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -56,5 +52,5 @@ jobs:
         with:
           app-name: 'mongodbatlasazurenodejs'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5DE5D55FE6394B1FB9BB9A1378EB47DB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7E18D554C77E46809F3531D864364A9E }}
           package: .
