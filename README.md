@@ -40,7 +40,7 @@ But a brief overview:
 2. Create a new Azure App Service.
 3. In Application Settings for your new App Service, add an application setting (not connection string) called ATLAS_URI and add your Atlas URI value.
 4. In Deployment Center, point it at your forked GitHub repo. If it asks to create a yml file, click yes/accept.
-5. Update your newly created yml file that is likely to be named main_<nameofyourazureappservice>.yml to match the contents of main_mongodbatlasazurenodejs.yml from this repo. This has the steps to install npm on both the server and client, build the client to generate the static files then copy them to the public folder of the server for single app deployment.
+5. Update your newly created yml file that is likely to be named main_nameofyourazureappservice.yml so the steps before deploy match the contents of main_mongodbatlasazurenodejs.yml from this repo. This has the steps to install npm on both the server and client, build the client to generate the static files then copy them to the public folder of the server for single app deployment. If you accidentally include the deploy step, it will fail because it won't be pointing at your Azure deployment ID.
 6. Updating this file in GitHub will automatically trigger a build and deploy in GitHub Actions. Once deployed, your website will automatically be up and running.
 
 ## Disclaimer
