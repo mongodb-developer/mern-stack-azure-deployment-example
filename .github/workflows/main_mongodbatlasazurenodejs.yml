@@ -49,12 +49,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: mern-app
-
+  
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'mongodbatlasazurenodejs'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5DE5D55FE6394B1FB9BB9A1378EB47DB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AE2B7A3BBD3E4F48ADFF18DBEEAF6C76 }}
           package: .
