@@ -1,5 +1,5 @@
 # mern-stack-azure-deployment-example
-This code was based off code written for the for the [Mern Tutorial](https://www.mongodb.com/languages/mern-stack-tutorial). It has been edited however to be deployable as one single app in Azure App Service.
+This code was based off code written for the for the [MERN Tutorial](https://www.mongodb.com/languages/mern-stack-tutorial). It has been edited however to be deployable as one single app in Azure App Service.
 
 Differences:
 1. The server Express app now includes a line `app.use(express.static('public'))` so static files for the UI are fetched from a public folder
